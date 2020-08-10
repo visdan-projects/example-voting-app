@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('build') {
         	when {
-        	    changeset "*+/worker/**"
+        	    changeset "**/worker/**"
         	}
         	
             steps {
@@ -22,7 +22,7 @@ pipeline {
         
         stage('test') {
         	when {
-        	    changeset "*+/worker/**"
+        	    changeset "**/worker/**"
         	}
         	
             steps {
@@ -36,7 +36,7 @@ pipeline {
         stage('package') {
         	when {
         	    branch 'master'
-        	    changeset "*+/worker/**"
+        	    changeset "**/worker/**"
         	}
 
             steps {
