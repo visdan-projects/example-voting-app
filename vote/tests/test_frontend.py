@@ -25,6 +25,11 @@ class VoteUnitTest(unittest.TestCase):
         """Assert that processed by string is set"""
         result = self.app.get('/')
         assert 'Processed by' in str(result.data)
+        
+    def test_version_is_set2(self):
+        """Assert that version is set2"""
+        result = self.app.get('/')
+        assert 'Version' in str(result.data)
 
 if __name__ == '__main__':
     unittest.main()
