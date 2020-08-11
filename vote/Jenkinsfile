@@ -15,7 +15,11 @@ pipeline {
             steps {
                 echo 'Compiling vote app'
                 dir('vote') {
-                    sh 'pip install -i requirements.txt' 
+                    //sh 'pip install -i requirements.txt' 
+                    sh 'pip install flask'
+                    sh 'pip install Redis'
+					sh 'pip install gunicorn'
+					sh 'pip install nose'
                 }
             }
         }
