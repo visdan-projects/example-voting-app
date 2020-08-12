@@ -69,6 +69,7 @@ pipeline {
         	agent any
         	
         	when {
+        		branch 'master'
         	    changeset "**/worker/**"
         	}
 
@@ -81,7 +82,7 @@ pipeline {
 
         				/* Push the container to the custom Registry */
         				workerImage.push()
-        				/* workerImage.push("${env.BRANCH_NAME}") */
+        				workerImage.push("${env.BRANCH_NAME}")
     				}
 				    
 				}
