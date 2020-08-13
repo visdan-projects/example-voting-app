@@ -221,6 +221,28 @@ pipeline {
             }
         }
         
+        stage('SonarQube') {
+            
+
+
+			agent any
+			
+			environment {
+			    sonarpath = tool 'SonarScanner'
+			}
+
+			steps {
+			    
+			    echo 'Running SonarQube Analysis'
+			    withSonarQubeEnv('sonar') {
+			        sh "${sonarpath}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
+			    }
+
+			}
+
+        }
+
+        
         stage('deploy to dev') {
         	agent any
         	
