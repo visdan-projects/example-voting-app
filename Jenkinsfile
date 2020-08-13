@@ -208,7 +208,6 @@ pipeline {
                 echo 'Running Integration Tests on vote App'
                 dir('vote') {
                 	sh 'integration_test.sh'
-                    sh 'nosetests -v'   
                 }
             }
         }
