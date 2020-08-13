@@ -223,7 +223,9 @@ pipeline {
         
         stage('SonarQube') {
             
-
+            when {
+                branch 'master'
+            }
 
 			agent any
 			
