@@ -220,6 +220,20 @@ pipeline {
 
             }
         }
+        
+        stage('deploy to dev') {
+        	agent any
+        	
+        	when {
+				branch 'master'
+        	}
+                     
+            steps {
+            	echo 'Deploy instavote with docker compose'
+            	sh 'docker-compose up -d'
+            }   
+        }
+        
     }
     
     post {
