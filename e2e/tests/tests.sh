@@ -8,7 +8,7 @@ while ! timeout 1 bash -c "echo > /dev/tcp/vote/80"; do
 done
 
 # add initial vote 
-curl -sS -X POST --data "vote=a" http://vote > /dev/null
+curl -sS -X POST --data "vote=a" http://35.197.119.123:80/ > /dev/null
 
 current=`phantomjs render.js "http://35.197.119.123:4000/" | grep -i vote | cut -d ">" -f 4 | cut -d " " -f1`
 next=`echo "$(($current + 1))"`
@@ -19,7 +19,7 @@ next=`echo "$(($current + 1))"`
 
 echo -e " I: Submitting one more vote...\n"
 
-curl -sS -X POST --data "vote=b" http://vote > /dev/null
+curl -sS -X POST --data "vote=b" http://35.197.119.123:80/ > /dev/null
 sleep 3
 
 new=`phantomjs render.js "http://35.197.119.123:4000/" | grep -i vote | cut -d ">" -f 4 | cut -d " " -f1`
