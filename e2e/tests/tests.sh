@@ -3,14 +3,14 @@
 current=""
 next=""
 
-while ! timeout 1 bash -c "echo > /dev/tcp/vote/80"; do
+while ! timeout 1 bash -c "echo > /dev/tcp/vote/5000"; do
     sleep 1
 done
 
 # add initial vote 
 curl -sS -X POST --data "vote=a" http://vote > /dev/null
 
-current=`phantomjs render.js "http://result:4000/" | grep -i vote | cut -d ">" -f 4 | cut -d " " -f1`
+current=`phantomjs render.js "http://result:5001/" | grep -i vote | cut -d ">" -f 4 | cut -d " " -f1`
 next=`echo "$(($current + 1))"`
 
   echo -e "\n\n-----------------"
@@ -22,7 +22,7 @@ echo -e " I: Submitting one more vote...\n"
 curl -sS -X POST --data "vote=b" http://vote > /dev/null
 sleep 3
 
-new=`phantomjs render.js "http://result:4000/" | grep -i vote | cut -d ">" -f 4 | cut -d " " -f1`
+new=`phantomjs render.js "http://result:5001/" | grep -i vote | cut -d ">" -f 4 | cut -d " " -f1`
 
 
   echo -e "\n\n-----------------"
