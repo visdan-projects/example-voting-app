@@ -49,6 +49,12 @@ services:
 
   db:
     image: postgres:9.4
+    environment: 
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    env_file: 
+      - .envpostgres
+    ports:
+      - 5432:5432
     networks:
       - back-tier
 
